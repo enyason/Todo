@@ -1,7 +1,8 @@
-package com.enyason.todo
+package com.enyason.todo.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.enyason.todo.R
 
 class MainActivity : AppCompatActivity() {
 

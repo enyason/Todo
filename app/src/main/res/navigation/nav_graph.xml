@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/taskListFragment"
-        android:name="com.enyason.todo.TaskListFragment"
+        android:name="com.enyason.todo.ui.TaskListFragment"
         android:label="fragment_task_list"
-        tools:layout="@layout/fragment_task_list" >
+        tools:layout="@layout/fragment_task_list">
         <action
             android:id="@+id/action_taskListFragment_to_addTaskFragment"
             app:destination="@id/addTaskFragment" />
@@ -19,12 +19,12 @@
     </fragment>
     <fragment
         android:id="@+id/addTaskFragment"
-        android:name="com.enyason.todo.AddTaskFragment"
+        android:name="com.enyason.todo.ui.AddTaskFragment"
         android:label="fragment_add_task"
         tools:layout="@layout/fragment_add_task" />
     <fragment
         android:id="@+id/editTaskFragment"
-        android:name="com.enyason.todo.EditTaskFragment"
+        android:name="com.enyason.todo.ui.EditTaskFragment"
         android:label="fragment_edit_task"
         tools:layout="@layout/fragment_edit_task" />
 </navigation>

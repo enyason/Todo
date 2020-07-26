@@ -10,5 +10,7 @@ interface TaskRepository {
 
     suspend fun updateTask(taskEntity: TaskEntity)
 
+    suspend fun deleteTask(taskEntity: TaskEntity)
+
     fun getAllTasks(): LiveData<List<TaskEntity>>
 }

@@ -13,6 +13,10 @@ class TaskRepositoryImpl(private val localDataSource: LocalDataSource) : TaskRep
         localDataSource.updateTask(taskEntity)
     }
 
+    override suspend fun deleteTask(taskEntity: TaskEntity) {
+        TODO("Not yet implemented")
+    }
+
     override fun getAllTasks(): LiveData<List<TaskEntity>> {
         return localDataSource.getAllTasks()
     }
