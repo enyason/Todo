@@ -5,6 +5,6 @@ import com.enyason.todo.di.AppContainer
 
 class App : Application() {
 
-    val appContainer = AppContainer(applicationContext)
+    val appContainer = AppContainer(this)
 
 }

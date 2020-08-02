@@ -46,7 +46,13 @@ class AddTaskFragment : Fragment() {
         val id = UUID.randomUUID().toString()
         val timeCreated = Calendar.getInstance().time.time
 
-        val task = TaskEntity(id = id,title = title,description = description,completed = false,timeCreated = timeCreated)
+        val task = TaskEntity(
+            id = id,
+            title = title,
+            description = description,
+            completed = false,
+            timeCreated = timeCreated
+        )
 
         viewModel.saveTask(task)
 

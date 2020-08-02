@@ -45,7 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@null"
-            android:hint="Task name"
+            android:hint="@string/text_task_name"
             android:padding="5dp" />
     </com.google.android.material.card.MaterialCardView>
 
@@ -70,7 +70,7 @@
             android:layout_height="150dp"
             android:background="@null"
             android:gravity="start"
-            android:hint="Task name"
+            android:hint="@string/text_task_desc"
             android:padding="5dp"
             android:textAlignment="textStart" />
     </com.google.android.material.card.MaterialCardView>
@@ -82,6 +82,7 @@
         android:layout_height="60dp"
         android:layout_marginTop="16dp"
         android:background="@color/colorPrimary"
+        android:gravity="center"
         android:text="@string/text_save_task"
         android:textAllCaps="false"
         android:textColor="@color/colorWhite"
