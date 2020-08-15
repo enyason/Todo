@@ -1,7 +1,7 @@
 package com.enyason.todo.data.repository
 
 import androidx.lifecycle.LiveData
-import com.enyason.todo.data.mdel.TaskEntity
+import com.enyason.todo.data.model.TaskEntity
 
 
 interface TaskRepository {

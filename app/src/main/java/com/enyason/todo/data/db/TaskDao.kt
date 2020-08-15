@@ -2,7 +2,7 @@ package com.enyason.todo.data.db
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.enyason.todo.data.mdel.TaskEntity
+import com.enyason.todo.data.model.TaskEntity
 
 @Dao
 interface TaskDao {

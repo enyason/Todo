@@ -2,7 +2,7 @@ package com.enyason.todo.data.sources
 
 import androidx.lifecycle.LiveData
 import com.enyason.todo.data.db.AppDataBase
-import com.enyason.todo.data.mdel.TaskEntity
+import com.enyason.todo.data.model.TaskEntity
 
 class LocalDataSource(private val db: AppDataBase) {
 

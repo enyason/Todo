@@ -26,5 +26,9 @@
         android:id="@+id/editTaskFragment"
         android:name="com.enyason.todo.ui.EditTaskFragment"
         android:label="fragment_edit_task"
-        tools:layout="@layout/fragment_edit_task" />
+        tools:layout="@layout/fragment_add_task">
+        <argument
+            android:name="task"
+            app:argType="com.enyason.todo.data.model.TaskEntity" />
+    </fragment>
 </navigation>

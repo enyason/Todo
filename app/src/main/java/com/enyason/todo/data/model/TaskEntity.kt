@@ -1,18 +1,20 @@
-package com.enyason.todo.data.mdel
+package com.enyason.todo.data.model
 
+import android.os.Parcelable
 import androidx.recyclerview.widget.DiffUtil
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.util.*
+import kotlinx.android.parcel.Parcelize
 
 @Entity(tableName = "task_table")
+@Parcelize
 data class TaskEntity(
     @PrimaryKey val id: String,
     val title: String,
     val description: String,
     val completed: Boolean,
     val timeCreated: Long
-)
+) : Parcelable
 
 
 val diffUtil = object : DiffUtil.ItemCallback<TaskEntity>() {

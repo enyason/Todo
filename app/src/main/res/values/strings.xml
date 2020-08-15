@@ -6,4 +6,5 @@
     <string name="text_save_task">Save Task</string>
     <string name="text_task_name">Task name</string>
     <string name="text_task_desc">Task Description</string>
+    <string name="text_updte">Update</string>
 </resources>

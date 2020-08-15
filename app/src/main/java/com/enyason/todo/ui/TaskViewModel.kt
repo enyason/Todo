@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.enyason.todo.data.mdel.TaskEntity
+import com.enyason.todo.data.model.TaskEntity
 import com.enyason.todo.data.repository.TaskRepository
 import kotlinx.coroutines.launch
 

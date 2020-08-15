@@ -50,7 +50,15 @@ class TaskListFragment : Fragment() {
 
             viewModel.updateTask(taskNew)
             true
-        })
+        },
+            { taskEntity ->
+
+
+                val action =
+                    TaskListFragmentDirections.actionTaskListFragmentToEditTaskFragment(taskEntity)
+                findNavController().navigate(action)
+
+            })
 
         binding.taskRv.apply {
             layoutManager = LinearLayoutManager(requireContext())
@@ -66,12 +74,12 @@ class TaskListFragment : Fragment() {
         }
 
 
-        viewModel.progress.observe(viewLifecycleOwner,Observer{
+        viewModel.progress.observe(viewLifecycleOwner, Observer {
 
-            it?.let { progress->
+            it?.let { progress ->
 
                 binding.progressBar.progress = progress
-                binding.textViewProgress.text = String.format("%s",progress)
+                binding.textViewProgress.text = String.format("%s", progress)
 
             }
         })
