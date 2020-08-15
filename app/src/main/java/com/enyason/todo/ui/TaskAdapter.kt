@@ -1,5 +1,6 @@
 package com.enyason.todo.ui
 
+import android.graphics.Paint
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
@@ -10,7 +11,11 @@ import com.enyason.todo.data.mdel.diffUtil
 import com.enyason.todo.databinding.TaskItemLayoutBinding
 import com.enyason.todo.utils.inflate
 
-class TaskAdapter : ListAdapter<TaskEntity, TaskAdapter.TaskViewHolder>(diffUtil) {
+class TaskAdapter(
+    private val onDeleteClick: (TaskEntity) -> Unit,
+    private val onLongClick: (TaskEntity) -> Boolean
+) :
+    ListAdapter<TaskEntity, TaskAdapter.TaskViewHolder>(diffUtil) {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder {
@@ -23,12 +28,26 @@ class TaskAdapter : ListAdapter<TaskEntity, TaskAdapter.TaskViewHolder>(diffUtil
     }
 
 
-    class TaskViewHolder(private val binding: TaskItemLayoutBinding) :
+    inner class TaskViewHolder(private val binding: TaskItemLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(taskEntity: TaskEntity) {
             binding.taskTitle.text = taskEntity.title
             binding.checkBox.isChecked = taskEntity.completed
+
+            if (taskEntity.completed){
+                //strike through text
+                binding.taskTitle.apply {
+                    paintFlags = binding.taskTitle.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+                }
+            }
+
+            binding.imageViewDelete.setOnClickListener {
+                onDeleteClick(taskEntity)
+            }
+            binding.root.setOnLongClickListener {
+                onLongClick(taskEntity)
+            }
         }
     }
 }

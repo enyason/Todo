@@ -12,8 +12,7 @@ class LocalDataSource(private val db: AppDataBase) {
 
     suspend fun updateTask(taskEntity: TaskEntity) = db.taskDao().updateTask(taskEntity)
 
-    suspend fun deleteTask(taskEntity: TaskEntity) = db
-
+    suspend fun deleteTask(taskEntity: TaskEntity) = db.taskDao().deleteTask(taskEntity)
 
     fun getAllTasks(): LiveData<List<TaskEntity>> = db.taskDao().getTasks()
 

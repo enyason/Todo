@@ -35,7 +35,22 @@ class TaskListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val taskAdapter = TaskAdapter()
+        val taskAdapter = TaskAdapter({ taskEntity ->
+            //delete task
+            viewModel.deleteTask(taskEntity)
+
+        }, { taskEntity ->
+
+            //update task state
+            val taskNew = if (taskEntity.completed) {
+                taskEntity.copy(completed = false)
+            } else {
+                taskEntity.copy(completed = true)
+            }
+
+            viewModel.updateTask(taskNew)
+            true
+        })
 
         binding.taskRv.apply {
             layoutManager = LinearLayoutManager(requireContext())
@@ -49,6 +64,18 @@ class TaskListFragment : Fragment() {
         binding.fabAddTask.setOnClickListener {
             findNavController().navigate(R.id.action_taskListFragment_to_addTaskFragment)
         }
+
+
+        viewModel.progress.observe(viewLifecycleOwner,Observer{
+
+            it?.let { progress->
+
+                binding.progressBar.progress = progress
+                binding.textViewProgress.text = String.format("%s",progress)
+
+            }
+        })
+
 
     }
 

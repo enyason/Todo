@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.enyason.todo.App
 import com.enyason.todo.R
 import com.enyason.todo.data.mdel.TaskEntity
@@ -54,7 +55,9 @@ class AddTaskFragment : Fragment() {
             timeCreated = timeCreated
         )
 
-        viewModel.saveTask(task)
+        viewModel.saveTask(task).also {
+            findNavController().popBackStack()
+        }
 
     }
 

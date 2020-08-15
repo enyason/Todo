@@ -14,7 +14,8 @@ interface TaskDao {
     suspend fun updateTask(entity: TaskEntity)
 
 //    @Query("DELETE * FROM task_table WHERE id : = id")
-//    suspend fun deleteTask(id:String)
+    @Delete
+    suspend fun deleteTask(entity: TaskEntity)
 
     @Query("SELECT * FROM task_table")
     fun getTasks(): LiveData<List<TaskEntity>>
