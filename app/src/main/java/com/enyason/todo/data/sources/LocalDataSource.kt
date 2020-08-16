@@ -3,8 +3,9 @@ package com.enyason.todo.data.sources
 import androidx.lifecycle.LiveData
 import com.enyason.todo.data.db.AppDataBase
 import com.enyason.todo.data.model.TaskEntity
+import javax.inject.Inject
 
-class LocalDataSource(private val db: AppDataBase) {
+class LocalDataSource @Inject constructor(private val db: AppDataBase) {
 
 
     suspend fun saveTask(taskEntity: TaskEntity) = db.taskDao().saveTask(taskEntity)
