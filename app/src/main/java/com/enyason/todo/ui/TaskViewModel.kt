@@ -1,6 +1,5 @@
 package com.enyason.todo.ui
 
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
@@ -9,8 +8,7 @@ import com.enyason.todo.data.model.TaskEntity
 import com.enyason.todo.data.repository.TaskRepository
 import kotlinx.coroutines.launch
 
-class TaskViewModel @ViewModelInject constructor(private val taskRepository: TaskRepository) :
-    ViewModel() {
+class TaskViewModel(private val taskRepository: TaskRepository) : ViewModel() {
 
 
     val tasks: LiveData<List<TaskEntity>> = taskRepository.getAllTasks()
@@ -28,7 +26,7 @@ class TaskViewModel @ViewModelInject constructor(private val taskRepository: Tas
         val progress = if (items.isEmpty()) {
             0
         } else {
-            count * 100 / items.size
+            count / items.size
         }
 
         progress
