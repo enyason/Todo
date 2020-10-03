@@ -1,10 +1,7 @@
 package com.enyason.todo
 
 import android.app.Application
-import com.enyason.todo.di.AppContainer
+import dagger.hilt.android.HiltAndroidApp
 
-class App : Application() {
-
-    val appContainer = AppContainer(this)
-
-}
+@HiltAndroidApp
+class App : Application()

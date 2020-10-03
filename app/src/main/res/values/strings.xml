@@ -7,4 +7,7 @@
     <string name="text_task_name">Task name</string>
     <string name="text_task_desc">Task Description</string>
     <string name="text_updte">Update</string>
+    <string name="text_edit">Edit</string>
+    <string name="text_delete">Delete</string>
+    <string name="text_check">Update</string>
 </resources>

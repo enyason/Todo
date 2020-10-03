@@ -5,17 +5,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.enyason.todo.App
 import com.enyason.todo.R
 import com.enyason.todo.ViewModelProvider
 import com.enyason.todo.databinding.FragmentAddTaskBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class EditTaskFragment : Fragment() {
 
     private lateinit var binding: FragmentAddTaskBinding
-    private lateinit var viewModel: TaskViewModel
+    private val viewModel:TaskViewModel by viewModels()
 
     private val args: EditTaskFragmentArgs by navArgs()
 
@@ -24,8 +27,6 @@ class EditTaskFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        val appContainer = (requireActivity().applicationContext as App).appContainer
-        viewModel = ViewModelProvider(appContainer.taskRepository).create(TaskViewModel::class.java)
 
         binding = FragmentAddTaskBinding.inflate(layoutInflater)
         return binding.root

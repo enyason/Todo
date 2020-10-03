@@ -5,24 +5,24 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.enyason.todo.App
 import com.enyason.todo.data.model.TaskEntity
 import com.enyason.todo.databinding.FragmentAddTaskBinding
+import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
 
+@AndroidEntryPoint
 class AddTaskFragment : Fragment() {
 
     private lateinit var binding: FragmentAddTaskBinding
-    private lateinit var viewModel: TaskViewModel
+    private val viewModel:TaskViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val appContainer = (requireActivity().applicationContext as App).appContainer
-        viewModel = com.enyason.todo.ViewModelProvider(appContainer.taskRepository)
-            .create(TaskViewModel::class.java)
 
         binding = FragmentAddTaskBinding.inflate(layoutInflater)
         return binding.root
