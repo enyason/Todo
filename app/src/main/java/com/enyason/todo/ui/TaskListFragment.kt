@@ -1,10 +1,12 @@
 package com.enyason.todo.ui
 
+import android.os.Build
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.WindowManager.LayoutParams.WRAP_CONTENT
+import android.widget.PopupWindow
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -12,16 +14,23 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.enyason.todo.App
 import com.enyason.todo.R
 import com.enyason.todo.ViewModelProvider
+import com.enyason.todo.data.model.TaskEntity
 import com.enyason.todo.databinding.FragmentTaskListBinding
+import com.enyason.todo.databinding.PopUpContentBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
+@RequiresApi(Build.VERSION_CODES.KITKAT)
 class TaskListFragment : Fragment() {
 
 
     private lateinit var binding: FragmentTaskListBinding
 
-   private val viewModel:TaskViewModel by viewModels()
+    private val viewModel: TaskViewModel by viewModels()
+
+    private val popUpContentBinding by lazy {
+        PopUpContentBinding.inflate(layoutInflater)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,30 +44,9 @@ class TaskListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val taskAdapter = TaskAdapter({ taskEntity ->
-            //delete task
-            viewModel.deleteTask(taskEntity)
+        val taskAdapter = TaskAdapter { taskEntity, view ->
 
-        }, { taskEntity ->
-
-            //update task state
-            val taskNew = if (taskEntity.completed) {
-                taskEntity.copy(completed = false)
-            } else {
-                taskEntity.copy(completed = true)
-            }
-
-            viewModel.updateTask(taskNew)
-            true
-        },
-            { taskEntity ->
-
-
-                val action =
-                    TaskListFragmentDirections.actionTaskListFragmentToEditTaskFragment(taskEntity)
-                findNavController().navigate(action)
-
-            })
+        }
 
         binding.taskRv.apply {
             layoutManager = LinearLayoutManager(requireContext())
